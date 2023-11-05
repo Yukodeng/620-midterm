@@ -128,7 +128,7 @@ shown bellow:
 
 …
 
-#### 2.3 Study type Histogram
+#### 2.3 Study Type Histogram
 Users can view the distribution of different study types among the filtered studies. It is important to visualize results by study type, because it can showcase different study types within a specific date range. In addition, it can also show the main types of studies being conducted regarding certain health issues or domain. This helps to inform about possible existing research gaps and potential innovative research methods. 
 
 
