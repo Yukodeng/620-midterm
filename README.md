@@ -1,8 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
 
 # Clinical Trials Query
 
@@ -29,22 +24,21 @@ different aspect.
 
 #### **1.1 Title Keyword Search**
 
-Each clinical study has a brief description (stored in the "brief_title"
+Each clinical study has a brief description (stored in the “brief_title”
 column). We add a widget to the UI:
 `textInput("brief_title_kw", "Enter title keywords")` to allow users
 search for one or multiple keywords separated by commas.
 
 Calling the function `query_kwds(studies, kwds, "brief_title")`, which
 is defined in the `ct-util.R` file, will transform the keyword(s) into a
-SQL-style query to filter entries in the "studies" data table whose
-values in the "brief_title" column match with the keyword(s). The
+SQL-style query to filter entries in the “studies” data table whose
+values in the “brief_title” column match with the keyword(s). The
 utility of this function can be generalized beyond this application to
 other databases.
 
 An example search is shown below:
 
-**Enter title keywords:**\
-Treatment, NSCLC
+**Enter title keywords:**  Treatment, NSCLC
 
 ``` r
 query_kwds(studies, c("Treatment", "NSCLC"), "brief_title", match_all = T) |> 
@@ -52,22 +46,20 @@ query_kwds(studies, c("Treatment", "NSCLC"), "brief_title", match_all = T) |>
   head(5)
 ```
 
-```         
-## # Source:   SQL [5 x 2]
-## # Database: DuckDB 0.8.1 [root@Darwin 21.6.0:R 4.2.2/../ctrialsgovdb/ctrialsgov.duckdb]
-##   nct_id      brief_title                                                       
-##   <chr>       <chr>                                                             
-## 1 NCT00824746 Study of Gefitinib Retreatment in Non-Small Cell Lung Cancer (NSC…
-## 2 NCT01951157 A Clinical Study in Three-arm of Lurbinectedin (PM01183) Alone or…
-## 3 NCT03520686 QUILT 2.023: A Study of N-803 in Combination With Current Standar…
-## 4 NCT03916627 Neoadjuvant Cemiplimab for the Treatment of Resectable NSCLC, HCC…
-## 5 NCT04820023 Phase 1/2 Study of BBT-176 in Advanced NSCLC With Progression Aft…
-```
+    ## # Source:   SQL [5 x 2]
+    ## # Database: DuckDB 0.8.1 [root@Darwin 21.6.0:R 4.2.2/../ctrialsgovdb/ctrialsgov.duckdb]
+    ##   nct_id      brief_title                                                       
+    ##   <chr>       <chr>                                                             
+    ## 1 NCT00824746 Study of Gefitinib Retreatment in Non-Small Cell Lung Cancer (NSC…
+    ## 2 NCT01951157 A Clinical Study in Three-arm of Lurbinectedin (PM01183) Alone or…
+    ## 3 NCT03520686 QUILT 2.023: A Study of N-803 in Combination With Current Standar…
+    ## 4 NCT03916627 Neoadjuvant Cemiplimab for the Treatment of Resectable NSCLC, HCC…
+    ## 5 NCT04820023 Phase 1/2 Study of BBT-176 in Advanced NSCLC With Progression Aft…
 
 #### **1.2 Define Study Date Range**
 
 The start and completion date of each clinical study is recorded in the
-"start_date"and "completion_date" columns of the studies data table.
+“start_date”and “completion_date” columns of the studies data table.
 Because the database we use for this application encompasses studies
 across a wide range of time period, we want to add a widget to allow
 users filter the search results based on study dates, as shown bellow:
@@ -89,7 +81,7 @@ not well-documented (i.e., abnormal dates).
 
 #### **1.3 xxxxxx**
 
-.....
+…..
 
 #### **1.4 Output: Interactive Data table**
 
@@ -110,16 +102,16 @@ the distributions of the data.
 #### 2.1 Phase Histogram
 
 The first graph is a histogram showing the number of each study phase,
-including missing values ("NA") and "not applicable". An example plot is
+including missing values (“NA”) and “not applicable”. An example plot is
 shown bellow:
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)\<!-
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 #### 2.2 Condition Histogram
 
-...
+…
 
-#### 2.3...
+#### 2.3…
 
 #### 2.4 Graph Aesthetics
 
