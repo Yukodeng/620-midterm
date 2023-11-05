@@ -85,11 +85,11 @@ not well-documented (i.e., abnormal dates).
 Users can select a specific sponsor type. The data is filtered by this 
 chosen sponsor type and by keywords and date range using the 
 `data_query_search()` function in the `ct-util.R` file. Users can choose 
-from the list as shown in the code chunk below:
+from the list as shown in the code chunk below (the default choice is OTHER):
 
 ``` r
-selectInput("sponsortype", "Choose a Sponsor Type:", 
-                      choices = c("OTHER", "AMBIG", "FED", "INDIV", "INDUSTRY", "NETWORK", "NIH", "OTHER_GOV", "UNKNOWN")),
+selectInput("sponsortype", "Choose a Sponsor Type:",
+choices = c("OTHER", "AMBIG", "FED", "INDIV", "INDUSTRY", "NETWORK", "NIH", "OTHER_GOV", "UNKNOWN")),
 ```
 
 Filtering by
@@ -129,9 +129,11 @@ shown bellow:
 …
 
 #### 2.3 Study type Histogram
+Users can view the distribution of different study types among the filtered studies. It is important to visualize results by study type, because it can showcase different study types within a specific date range. In addition, it can also show the main types of studies being conducted regarding certain health issues or domain. This helps to inform about possible existing research gaps and potential innovative research methods. 
+
 
 #### 2.4 Primary Purpose Pie Chart
-
+Users can also view the distribution of different primary purposes among the filtered studies. Understanding the primary purpose of different studies helps identify the focus of research efforts, such as treatment, prevention, and so on. It shows the main directions of current research within specific health domains. Additionally, this is also helpful in making healthcare-related decisions such as resource allocation.
 
 
 #### 2.4 Graph Aesthetics
