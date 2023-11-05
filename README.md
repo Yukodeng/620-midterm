@@ -79,7 +79,24 @@ for looking up studies carried out at a specific time, but also helpful
 for filtering out ongoing studies or spotting studies whose dates are
 not well-documented (i.e., abnormal dates).
 
-#### **1.3 xxxxxx**
+#### **1.3 Define Sponsor Type**
+
+
+Users can select a specific sponsor type. The data is filtered by this 
+chosen sponsor type and by keywords and date range using the 
+`data_query_search()` function in the `ct-util.R` file. Users can choose 
+from the list as shown in the code chunk below:
+
+``` r
+selectInput("sponsortype", "Choose a Sponsor Type:", 
+                      choices = c("OTHER", "AMBIG", "FED", "INDIV", "INDUSTRY", "NETWORK", "NIH", "OTHER_GOV", "UNKNOWN")),
+```
+
+Filtering by
+different sponsor types allow uses to examine the differences in studies 
+that have different sponsor types. These differences might link to study 
+outcomes and can potentially be helpful in future decisions regarding sponsor 
+choices and spotting potentially beneficial sponsor opportunities.
 
 …..
 
@@ -111,7 +128,11 @@ shown bellow:
 
 …
 
-#### 2.3…
+#### 2.3 Study type Histogram
+
+#### 2.4 Primary Purpose Pie Chart
+
+
 
 #### 2.4 Graph Aesthetics
 
