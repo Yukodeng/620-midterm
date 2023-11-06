@@ -79,7 +79,7 @@ for looking up studies carried out at a specific time, but also helpful
 for filtering out ongoing studies or spotting studies whose dates are
 not well-documented (i.e., abnormal dates).
 
-#### **1.3 Define Sponsor Type**
+#### **1.3 Define Sponsor Type** 
 
 
 Users can select a specific sponsor type. The data is filtered by this 
@@ -122,7 +122,7 @@ shown bellow:
 
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
-#### 2.2 Condition Histogram
+#### 2.2 Condition Histogram [This feature answers question 2]
 
 A new tab that gives a histogram showing most frequent 10 conditions that trials in a query are examining. The condition could be filtered by other features from `section 1`, including study date range, sponsor type, and a user defined color of histogram. The useful information provided by the histogram includes the frequency of trials per condition, trends over time, and the emphasis placed on certain conditions by various sponsor types. An example plot is shown bellow: 
 
