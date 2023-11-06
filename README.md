@@ -130,16 +130,19 @@ A new tab that gives a histogram showing most frequent 10 conditions that trials
 
 #### 2.3 Primary Purpose Pie Chart
 Users can also view the distribution of different primary purposes among the filtered studies. Understanding the primary purpose of different studies helps identify the focus of research efforts, such as treatment, prevention, and so on. It shows the main directions of current research within specific health domains. Additionally, this is also helpful in making healthcare-related decisions such as resource allocation. An example plot is shown bellow: 
+
 ![](README_files/figure-gfm/primary_purpose.png)
 
 
 #### 2.4 Study Type Histogram
 Users can view the distribution of different study types among the filtered studies. It is important to visualize results by study type, because it can showcase different study types within a specific date range. In addition, it can also show the main types of studies being conducted regarding certain health issues or domain. This helps to inform about possible existing research gaps and potential innovative research methods. An example plot is shown bellow: 
+
 ![](README_files/figure-gfm/study_type.png)<!-- -->
 
 #### 2.5 Intervention Type Pie Chart
 
 Users can view the distribution of different intervention types among the filtered studies. The pie chart conveys the proportional representation of various intervention types in the database of clinical trials. This information can be leveraged to identify trends in medical research, recognize potential areas of market saturation or underrepresentation, and make informed decisions about future research directions or investments. For example, a large proportion of  in "Diagnostic Test" interventions might indicate a growing market for diagnostic tools, whereas a small proportion in "Behavioral" interventions could reveal a potential area for exploration or opportunity for innovation in treatment approaches. An example plot is shown bellow: 
+
 ![](README_files/figure-gfm/inter_pie.png)<!-- -->
 
 #### 2.6 Intervention Histogram Specified by Intervention Type
@@ -163,6 +166,7 @@ selectInput("intervention_type", "Choose an intervention type:",
 The feature offers significant benefits to researchers and healthcare practitioners. Suppose they are interested in understanding the most prevalent drug interventions for `breast cancer`; they can simply enter `breast cancer` into the brief title keyword field and select 'Drug' as the intervention type. Paired with the pie chart functionality, this tool not only reveals the most common types of interventions but also highlights the specific interventions that are most frequent within each category. This dual-layered insight is extremely beneficial for research objectives and can further contribute to patient care advancements.
 
 An example plot is shown bellow: 
+
 ![](README_files/figure-gfm/intervention.png)<!-- -->
 
 #### 2.7 Graph Aesthetics
