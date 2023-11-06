@@ -114,7 +114,7 @@ Aside from the data table showing all the query results, we want to
 include additional visualizations to help users explore and learn about
 the distributions of the data.
 
-#### 2.1 Phase Histogram
+#### 2.1 Phase Histogram [This feature answers question 1]
 
 The first graph is a histogram showing the number of each study phase,
 including missing values (“NA”) and “not applicable”. An example plot is
