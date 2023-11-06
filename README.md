@@ -125,11 +125,13 @@ shown bellow:
 #### 2.2 Condition Histogram
 
 A new tab that gives a histogram showing most frequent 10 conditions that trials in a query are examining. The condition could be filtered by other features from `section 1`, including study date range, sponsor type, and a user defined color of histogram. The useful information provided by the histogram includes the frequency of trials per condition, trends over time, and the emphasis placed on certain conditions by various sponsor types. An example plot is shown bellow: 
+
 ![](README_files/figure-gfm/condition_hist.png)<!-- -->
 
 #### 2.3 Primary Purpose Pie Chart
 Users can also view the distribution of different primary purposes among the filtered studies. Understanding the primary purpose of different studies helps identify the focus of research efforts, such as treatment, prevention, and so on. It shows the main directions of current research within specific health domains. Additionally, this is also helpful in making healthcare-related decisions such as resource allocation. An example plot is shown bellow: 
-![](README_files/figure-gfm/primary_purpose.png)<!-- -->
+![](README_files/figure-gfm/primary_purpose.png)
+
 
 #### 2.4 Study Type Histogram
 Users can view the distribution of different study types among the filtered studies. It is important to visualize results by study type, because it can showcase different study types within a specific date range. In addition, it can also show the main types of studies being conducted regarding certain health issues or domain. This helps to inform about possible existing research gaps and potential innovative research methods. An example plot is shown bellow: 
