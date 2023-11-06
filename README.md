@@ -129,7 +129,7 @@ A new tab that gives a histogram showing most frequent 10 conditions that trials
 ![](README_files/figure-gfm/condition_hist.png)<!-- -->
 
 #### 2.3 Primary Purpose Pie Chart
-Users can also view the distribution of different primary purposes among the filtered studies. Understanding the primary purpose of different studies helps identify the focus of research efforts, such as treatment, prevention, and so on. It shows the main directions of current research within specific health domains. Additionally, this is also helpful in making healthcare-related decisions such as resource allocation. An example plot is shown bellow: 
+Users can also view the distribution of different primary purposes among the filtered studies. Understanding the primary purpose of different studies helps identify the focus of research efforts, such as treatment, prevention, and so on. It shows the main directions of current research within specific health domains, showing the trends and gaps in research. Additionally, this information is also helpful in guiding healthcare-related decisions related to the distribution of healthcare resources and funding. For instance, if a significant portion of studies concentrates on prevention, stakeholders might invest more in preventive healthcare strategies. Therefore, primary purpose distributions can provide valuable information for strategic planning and prioritization in healthcare management. An example plot is shown bellow: 
 
 ![](README_files/figure-gfm/primary_purpose.png)
 
