@@ -162,8 +162,10 @@ selectInput("intervention_type", "Choose an intervention type:",
 
 The feature offers significant benefits to researchers and healthcare practitioners. Suppose they are interested in understanding the most prevalent drug interventions for `breast cancer`; they can simply enter `breast cancer` into the brief title keyword field and select 'Drug' as the intervention type. Paired with the pie chart functionality, this tool not only reveals the most common types of interventions but also highlights the specific interventions that are most frequent within each category. This dual-layered insight is extremely beneficial for research objectives and can further contribute to patient care advancements.
 
+An example plot is shown bellow: 
+![](README_files/figure-gfm/intervention.png)<!-- -->
 
-#### 2.4 Graph Aesthetics
+#### 2.7 Graph Aesthetics
 
 Users can also customize the color for the graphs from a set of choices
 including `Grey, Blue, Green, Red, and Purple`. The default is `Grey`.
