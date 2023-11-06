@@ -11,6 +11,8 @@ In this `README.md` file, we will explain the numerous features of the
 application, as well as provide you with the motivations behind these
 implementations.
 
+## Author: Yufei Deng, Ziqing Ji, Yining Chen
+
 ## 1. App Features: Filtering Studies
 
 The first class of features in this app is a set of input widgets that
