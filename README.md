@@ -139,6 +139,29 @@ Users can view the distribution of different study types among the filtered stud
 
 #### 2.5 Intervention Type Pie Chart
 
+Users can view the distribution of different intervention types among the filtered studies. The pie chart conveys the proportional representation of various intervention types in the database of clinical trials. This information can be leveraged to identify trends in medical research, recognize potential areas of market saturation or underrepresentation, and make informed decisions about future research directions or investments. For example, a large proportion of  in "Diagnostic Test" interventions might indicate a growing market for diagnostic tools, whereas a small proportion in "Behavioral" interventions could reveal a potential area for exploration or opportunity for innovation in treatment approaches. An example plot is shown bellow: 
+![](README_files/figure-gfm/inter_pie.png)<!-- -->
+
+#### 2.6 Intervention Histogram Specified by Intervention Type
+Users can view the top 10 interventions specified by an intervention type, as well as other filtering conditions listed in `section 1` (study date, sponsor type, brief title keyword, color of histogram). Users can select a specific intervention type using the drop-down list as shown in the code chunk below (the default choice is OTHER):
+
+``` r
+selectInput("intervention_type", "Choose an intervention type:",
+                               choices = c("Other",
+                                           "Combination Product",
+                                           "Behavioral",
+                                           "Dietary Supplement",
+                                           "Diagnostic Test",
+                                           "Drug",
+                                           "Device",
+                                           "Procedure",
+                                           "Genetic",
+                                           "Biological",
+                                           "Radiation")), 
+```
+
+The feature offers significant benefits to researchers and healthcare practitioners. Suppose they are interested in understanding the most prevalent drug interventions for `breast cancer`; they can simply enter `breast cancer` into the brief title keyword field and select 'Drug' as the intervention type. Paired with the pie chart functionality, this tool not only reveals the most common types of interventions but also highlights the specific interventions that are most frequent within each category. This dual-layered insight is extremely beneficial for research objectives and can further contribute to patient care advancements.
+
 
 #### 2.4 Graph Aesthetics
 
