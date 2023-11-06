@@ -135,7 +135,7 @@ Users can also view the distribution of different primary purposes among the fil
 
 
 #### 2.4 Study Type Histogram
-Users can view the distribution of different study types among the filtered studies. It is important to visualize results by study type, because it can showcase different study types within a specific date range. In addition, it can also show the main types of studies being conducted regarding certain health issues or domain. This helps to inform about possible existing research gaps and potential innovative research methods. An example plot is shown bellow: 
+Users can view the distribution of different study types among the filtered studies. It is important to visualize results by study type, because it can showcase different study types within a specific date range. In addition, it can also show the main types of studies being conducted regarding certain health issues or domain in order to understand what traditional methods are being used in different types of research topics and purposes. This helps to inform about possible existing research gaps and potential innovative research methods. For example, researchers will be more aware of which study types are more revalent compared to others when conducting research regarding a specific health topic. They can explore the gaps in other study types that are relatively more unprevalent that might yield more unexpected results. An example plot is shown bellow: 
 
 ![](README_files/figure-gfm/study_type.png)<!-- -->
 
