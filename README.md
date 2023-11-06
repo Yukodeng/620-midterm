@@ -98,8 +98,6 @@ that have different sponsor types. These differences might link to study
 outcomes and can potentially be helpful in future decisions regarding sponsor 
 choices and spotting potentially beneficial sponsor opportunities.
 
-…..
-
 #### **1.4 Output: Interactive Data table**
 
 The query results are organized into an interactive data table and
