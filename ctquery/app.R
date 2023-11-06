@@ -1,3 +1,9 @@
+# This is a Shiny web application. You can run the application by clicking
+# the 'Run App' button above.
+#
+
+# Clinical Trials Query Application
+
 library(shiny)
 library(duckdb)
 library(dplyr)
@@ -6,16 +12,9 @@ library(DT)
 library(ggplot2)
 library(ctrialsgov)
 
-# Clinical Trials Query Application
-# 1. Clean up the table column names X
-# 2. Allow multiple brief title keywords X
-# 3. Create a histogram of the phase
-# 4. Select industry class.
-# 5. Organize files.
-# 6. Plot the cumulative studies.
 
 con = dbConnect(
- duckdb(file.path("..", "ctrialsgovdb","ctrialsgov.duckdb")), read_only = T
+  duckdb(file.path("..", "ctrialsgovdb","ctrialsgov.duckdb"))#, read_only = T
 )
 ctgov_load_duckdb_file(
   file.path("..", "ctrialsgovdb", "ctgov-derived.duckdb")
@@ -23,75 +22,118 @@ ctgov_load_duckdb_file(
 
 studies = tbl(con, "studies")
 sponsors = tbl(con, "sponsors")
-endpoints = ctgov_query_endpoint()
+conditions = tbl(con,"conditions")
+interventions = tbl(con, "interventions")
+
+# endpoints = ctgov_query_endpoint()
+# conditions = ctgov_query(conditions)
+interventions = ctgov_query(interventions)
+# sponsors = ctgov_query(sponsors)
+
 
 source(file.path("..","ctquery","ct-util.R"))
 
-
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  
+
   # Application title
   titlePanel("Clinical Trials Query"),
-  # About the data source
-  tags$p(
-    "Data of clinical trials are available on the website",
-    tags$a("ClinicalTrials.gov,", href = "https://clinicaltrials.gov/"),
-    "which is an online database of clinical research studies and their study results."
-  ),
-  
-  # Add widgets that collect input from users 
+
+  # Sidebar with a slider input for number of bins 
   sidebarLayout(
-    sidebarPanel(
-      # widget sidebar title1
-      h4("Filter your search"),
-      # query by study title
-      textInput("brief_title_kw", "Enter title keywords"),
-      # query studies within a date range
-      dateRangeInput("date_range", "Custom Study Date Range",
-                     start = "1900-01-01", end = "2100-12-31",
-                     format = "mm/dd/yyyy", 
-                     separator = " - "),
-      br(),
-   
-      h4("Customize histograms"),   # widget sidebar title2
-      # custom histogram bar color
-      selectInput("color", "Select histogram color", 
-                  choices = c("Grey" = "grey20","Blue" = "lightblue",
-                              "Green" = "lightgreen","Red" = "salmon", 
-                              "Purple" = "purple"),
-                  selected = "grey20")
-      ),
-        
-      # Show plot of the generated distribution
+      sidebarPanel(
+          # widget sidebar title1
+          h4("Filter your search"),
+          # query studies by title keywords
+          textInput("brief_title_kw", "Brief title keywords"),
+          # query studies by sponsor type
+          selectInput("sponsortype", "Choose a Sponsor Type:", 
+                      choices = c("OTHER", "AMBIG", "FED", "INDIV", "INDUSTRY",
+                                  "NETWORK", "NIH", "OTHER_GOV", "UNKNOWN")),
+          # search studies within a date range
+          dateRangeInput("date_range", "Custom Study Date Range",
+                         start = "1900-01-01", end = "2100-12-31",
+                         format = "mm/dd/yyyy", 
+                         separator = " - "),
+          br(),
+          
+          h4("Customize histograms"), # widget sidebar title2
+          # custom histogram bar color
+          selectInput("color", "Select histogram color", 
+                      choices = c("Grey" = "grey20","Blue" = "lightblue",
+                                  "Green" = "lightgreen","Red" = "salmon", 
+                                  "Purple" = "purple"),
+                      selected = "grey20")),
+
+      # Show plots of the generated distribution
       mainPanel(
-        # display histograms
-        tabsetPanel(type = "tabs",
+        tabsetPanel(
+          type = "tabs",
           tabPanel("Phase", plotOutput("phasePlot")),
-          tabPanel('Endpoint Met', plotOutput("endpointPlot"))
+          # tabPanel("Endpoint Met", plotOutput("endpointPlot")),
+          tabPanel("Condition Histogram", plotOutput("conditionPlot")),
+          tabPanel("Primary Purpose", plotOutput("primarypurposePlot")),
+          tabPanel("Study Type", plotOutput("studytypePlot")),
+          tabPanel("Intervention Distribution", plotOutput("interventionPieChart")),
+          tabPanel("Specific Interventions", 
+                   selectInput("intervention_type", "Choose an intervention type:",
+                               choices = c("Other",
+                                           "Combination Product",
+                                           "Behavioral",
+                                           "Dietary Supplement",
+                                           "Diagnostic Test",
+                                           "Drug",
+                                           "Device",
+                                           "Procedure",
+                                           "Genetic",
+                                           "Biological",
+                                           "Radiation")), 
+                   plotOutput("interventionHistogram"))
         ),
-        # display filtered data table
         dataTableOutput("trial_table")
       )
     )
 )
 
-# Define server logic required to draw a histogram
-server <- function(input, output) {
 
+server <- function(input, output) {
+  # study phase
   output$phasePlot <- renderPlot({
-    create_phase_hist_plot(studies, input$brief_title_kw, input$date_range, input$color) 
+    create_phase_hist_plot(studies, sponsors, input$brief_title_kw,
+                           input$date_range, input$color, input$sponsortype)
   })
   
-  output$endpointPlot <- renderPlot({
-    create_endpoint_hist_plot(studies, endpoints, input$brief_title_kw, input$date_range)
+  #study type
+  output$studytypePlot<- renderPlot({
+    create_studytype_histogram(studies, input$sponsortype, input$brief_title_kw, input$date_range, input$color)
   })
-
-
+  
+  #primary purpose
+  output$primarypurposePlot<- renderPlot({
+    create_purpose_pie(studies, input$sponsortype, input$brief_title_kw, input$date_range)
+  })
+  
+  #condition histogram
+  output$conditionPlot <- renderPlot({
+    create_condition_histogram(studies, conditions, input$brief_title_kw, input$sponsortype, input$date_range, input$color)
+  })
+  
+  #intervention type distribution
+  output$interventionPieChart <- renderPlot({
+    create_intervention_pie_data(studies,interventions, input$brief_title_kw, input$sponsortype, input$date_range)
+  })
+  
+  #intervention names based on user-defined intervention type
+  output$interventionHistogram <- renderPlot({
+    create_intervention_histogram(studies, interventions, input$brief_title_kw, input$intervention_type, input$sponsortype, input$date_range, input$color)
+  })
+  
   output$trial_table = renderDataTable({
     si = trimws(unlist(strsplit(input$brief_title_kw, ",")))
     
     data_query_search(studies, si, input$date_range) |>
+      left_join(as_tibble(sponsors), by='nct_id') |>
+      filter(agency_class == input$sponsortype) |>
       select(nct_id, brief_title, phase, start_date, completion_date) |>
       rename(`NCT ID` = nct_id, `Brief Title` = brief_title, `Phase` = phase,
              `Start Date` = start_date, `Completion Date` = completion_date) |>
