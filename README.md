@@ -79,7 +79,7 @@ for looking up studies carried out at a specific time, but also helpful
 for filtering out ongoing studies or spotting studies whose dates are
 not well-documented (i.e., abnormal dates).
 
-#### **1.3 Define Sponsor Type** 
+#### **1.3 Define Sponsor Type** [This filter answers question 3]
 
 
 Users can select a specific sponsor type. The data is filtered by this 
